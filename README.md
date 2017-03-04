@@ -4,9 +4,10 @@ O programa implementado permite a criação e a listagem de contas e também de 
 
 Para executar a aplicação siga os passo abaixo:  
 
-1 - Encontre a classe ServiceImpl.java  
+1 - Encontre a classe ServiceImpl.java no projeto "rmi-server"  
 2 - Execute o método main, que será a classe remota, em Java Application  
-3 - Execute a aplicação em um servidor ou container (ex.: tomcat)  
+3 - Baixe o projeto "zkAlfa" e execute as atualizações das dependências do Maven  
+4 - Execute a aplicação em um servidor ou container (ex.: tomcat)  
 
 Tela de inclusão de contas:
 ![Screenshot](screenshot.png)
