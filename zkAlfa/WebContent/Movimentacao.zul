@@ -1,0 +1,88 @@
+<?page title="Trabalho ALFA"?>
+<window id="calculadora" title="Trabalho ALFA" border="normal" width="100%" apply="br.com.controller.MovimentacaoController">
+	<grid>
+		<columns>
+			<column width="190px" />
+			<column width="220px" />
+			<column width="100%" />
+		</columns>
+		<rows>
+			<row>
+				<cell>
+					<label value="Valor:" />
+				</cell>
+				<cell>
+					<textbox id="nomeTitular" width="50" value="@{calculadora$composer.movimentacao.valor}" />
+				</cell>
+				<cell>
+					<button id="btnGerarMovimentacao" label="Gerar Movimentação na Conta - RMI" onClick="" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Data:" />
+				</cell>
+				<cell>
+					<datebox id="numeroConta" width="50" value="@{calculadora$composer.movimentacao.data}" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Descrição:" />
+				</cell>
+				<cell>
+					<textbox id="banco" width="50" value="@{calculadora$composer.movimentacao.descricao}" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Conta:" />
+				</cell>
+				<cell>
+					<combobox id="cmbContas" width="150px" model="@{calculadora$composer.contas}">
+						<template name="model">
+							<comboitem label="${each.nomeTitular}" value="${each.id}" />
+						</template>
+					</combobox>
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Tipo de movimentação:" />
+				</cell>
+				<cell>
+					<combobox id="cmbColor" width="150px" value="@{calculadora$composer.tipo}">
+						<comboitem label="ENTRADA" />
+						<comboitem label="SAÍDA" />
+					</combobox>
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<columns>
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<listbox id="lstbxHistorico" mold="paging" pageSize="5" model="@{calculadora$composer.listagemMovimentacoes}" width="100%"
+					emptyMessage="Nenhum informação na tabela." visible="true">
+					<listhead sizable="true">
+						<listheader label="Valor da operação" width="50%" align="center" />
+						<listheader label="Tipo Movimentação" width="50%" align="center" />
+						<listheader label="Data" width="50%" align="center" />
+						<listheader label="Descrição" width="50%" align="center" />
+						<listheader label="Conta" width="50%" align="center" />
+					</listhead>
+					<listitem self="@{each=registro}" value="@{registro}">
+						<listcell label="@{registro.valor}" />
+						<listcell label="@{registro.tipoMovimentacao}" />
+						<listcell label="@{registro.data}" />
+						<listcell label="@{registro.descricao}" />
+						<listcell label="@{registro.conta.nomeTitular}" />
+					</listitem>
+				</listbox>
+			</row>
+		</rows>
+	</grid>
+</window>

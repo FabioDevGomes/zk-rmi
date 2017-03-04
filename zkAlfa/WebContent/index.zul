@@ -1,0 +1,75 @@
+<?page title="Trabalho ALFA"?>
+<window id="calculadora" title="Trabalho ALFA" border="normal" width="100%" apply="br.com.controller.ContaController">
+	<grid>
+		<columns>
+			<column width="110px" />
+			<column width="220px" />
+			<column width="100%" />
+			<column width="100%" />
+		</columns>
+		<rows>
+			<row>
+				<cell>
+					<label value="Titular: " />
+				</cell>
+				<cell>
+					<textbox id="nomeTitular" width="50" value="@{calculadora$composer.conta.nomeTitular}" />
+				</cell>
+				<cell>
+					<button id="btnCriarConta" label="Criar Conta - RMI" onClick="" />
+				</cell>
+				<cell>
+					<a href="http://localhost:8080/zkAlfa/Movimentacao.zul" label="Gerar movimentação" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Número Conta: " />
+				</cell>
+				<cell>
+					<textbox id="numeroConta" width="50" value="@{calculadora$composer.conta.numero}" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Banco: " />
+				</cell>
+				<cell>
+					<textbox id="banco" width="50" value="@{calculadora$composer.conta.banco}" />
+				</cell>
+			</row>
+			<row>
+				<cell>
+					<label value="Agência: " />
+				</cell>
+				<cell>
+					<textbox id="agencia" width="50" value="@{calculadora$composer.conta.agencia}" />
+				</cell>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<columns>
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<listbox id="lstbxHistorico" mold="paging" pageSize="5" model="@{calculadora$composer.listagemContas}" width="100%"
+					emptyMessage="Nenhum informação na tabela." visible="true">
+					<listhead sizable="true">
+						<listheader label="Nome Titular" width="50%" align="center" />
+						<listheader label="Número" width="50%" align="center" />
+						<listheader label="Banco" width="50%" align="center" />
+						<listheader label="Agência" width="50%" align="center" />
+					</listhead>
+					<listitem self="@{each=registro}" value="@{registro}">
+						<listcell label="@{registro.nomeTitular}" />
+						<listcell label="@{registro.numero}" />
+						<listcell label="@{registro.banco}" />
+						<listcell label="@{registro.agencia}" />
+					</listitem>
+				</listbox>
+			</row>
+		</rows>
+	</grid>
+</window>
