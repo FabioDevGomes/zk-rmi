@@ -64,6 +64,7 @@ public class ServiceImpl extends UnicastRemoteObject implements ContaService {
 		return movimentacao;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movimentacao> listarMovimentacoes() throws RemoteException {
 		return JPAUtil.getEntityManager().createQuery("Select t from " + Movimentacao.class.getName() + " t").getResultList();
